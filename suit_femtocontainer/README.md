@@ -101,7 +101,7 @@ $ RIOT/dist/tools/suit/suit-manifest-generator/bin/suit-tool sign -k RIOT/keys/d
 7. Execute the bpf application on the instance:
 
 ```Console
-aiocoap-client -m POST coap://[2001:db8::2]/bpf/exec/0
+aiocoap-client -m POST coap://[2001:db8::2]/bpf/exec
 ```
 
 ## Introduction
@@ -390,8 +390,8 @@ monotonically number and must be increased after every update.
 
 The Femto-Containers executable is stored in slot `.ram.0` for simplicity in
 this example. It can be triggered for execution by sending a POST request over
-CoAP to the `/bpf/exec/0` endpoint on the instance running.
+CoAP to the `/bpf/exec` endpoint on the instance running.
 
 ```Console
-aiocoap-client -m POST coap://[2001:db8::2]/bpf/exec/0
+aiocoap-client -m POST coap://[2001:db8::2]/bpf/exec
 ```

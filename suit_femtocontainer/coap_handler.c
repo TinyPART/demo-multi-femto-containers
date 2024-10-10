@@ -69,7 +69,7 @@ static ssize_t _bpf_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx
         .buf = buf,
         .buf_len = len,
     };
-    printf("[BPF]: executing gcoap handler\n");
+    //printf("[BPF]: executing gcoap handler\n");
 
     f12r_add_region(&_bpf, &mem_pdu, pdu->hdr, 256, FC_MEM_REGION_READ | FC_MEM_REGION_WRITE);
     f12r_add_region(&_bpf, &mem_pkt, pdu, sizeof(coap_pkt_t), FC_MEM_REGION_READ | FC_MEM_REGION_WRITE);
@@ -78,17 +78,20 @@ static ssize_t _bpf_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx
     int64_t result = -1;
     int res = f12r_execute_ctx(&_bpf, &bpf_ctx, sizeof(bpf_ctx), &result);
 
+    if (res < 0) {
+        return coap_reply_simple(pdu,COAP_CODE_SERVICE_UNAVAILABLE, buf, len, 0, NULL, 0);
+    }
+
     size_t reply_len = fmt_s32_dfp(reply, result, -2);
 
-    printf("Execution done res=%i, result=%i\n", res, (int)result);
+    //printf("Execution done res=%i, result=%i\n", res, (int)result);
     return coap_reply_simple(pdu, COAP_CODE_204, buf, len, 0, (uint8_t*)reply, reply_len);
 }
 
 /* must be sorted by path (ASCII order) */
 const coap_resource_t coap_resources[] = {
     COAP_WELL_KNOWN_CORE_DEFAULT_HANDLER,
-    { "/bpf/exec/0", COAP_POST, _bpf_handler, ".ram.0" },
-    { "/bpf/exec/1", COAP_POST, _bpf_handler, ".ram.1" },
+    { "/bpf/exec", COAP_POST, _bpf_handler, ".ram.0" },
     { "/riot/board", COAP_GET, _riot_board_handler, NULL },
 
     /* this line adds the whole "/suit"-subtree */

@@ -7,9 +7,10 @@ low-power IoT devices. Check out this paper for a description of
 Femto-Containers in details. If you want to cite this work, please cite it as
 such:
 
-K. Zandberg, E. Baccelli, S. Yuan, F. Besson, JP Talpin. Femto-Containers:
+[K. Zandberg, E. Baccelli, S. Yuan, F. Besson, JP Talpin. Femto-Containers:
 Lightweight Virtualization and Fault Isolation For Small Software Functions on
-Low-Power IoT Microcontrollers. In Proc. of 23rd ACM/IFIP MIDDLEWARE, Nov. 2022.
+Low-Power IoT Microcontrollers. In Proc. of 23rd ACM/IFIP MIDDLEWARE, Nov.
+2022.](https://inria.hal.science/hal-03888109v1)
 
 ## Examples
 

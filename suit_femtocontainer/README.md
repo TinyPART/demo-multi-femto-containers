@@ -5,6 +5,10 @@ payload updates into a RIOT application. It implements basic support of the
 SUIT architecture using the manifest format specified in
 [draft-ietf-suit-manifest-09](https://tools.ietf.org/id/draft-ietf-suit-manifest-09.txt).
 
+Two femto-containers are instantiated in this example, both in `coap_handler.c`.
+These femto-containers are executed as soon as the CoAP endpoint is executed in
+response to a request.
+
 This document describes the preliminary requirements for using the SUIT
 workflow with Femto-containers to update runtime binaries on RIOT.
 

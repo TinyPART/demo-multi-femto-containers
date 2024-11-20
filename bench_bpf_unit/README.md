@@ -5,6 +5,9 @@ different BPF interpreters for RIOT. The output contains the time it takes for
 each instruction to run. The benchmark application can be compiled and executed
 on any RIOT supported board.
 
+The femto-container application is generated and executed in the `main()` function
+of this example and used to benchmark the loaded application.
+
 Toggling the interpreter is done via the `FEMTO` variable in the
 Makefile.
 
@@ -59,7 +62,7 @@ with:
 
 ```Console
 koen@zometeen examples/bench_bpf_unit $ make term
-examples/bench_bpf_unit/bin/native/tests_bench_bpf_unit.elf /dev/ttyACM0 
+examples/bench_bpf_unit/bin/native/tests_bench_bpf_unit.elf /dev/ttyACM0
 RIOT native interrupts/signals initialized.
 RIOT native board initialized.
 RIOT native hardware initialization complete.
